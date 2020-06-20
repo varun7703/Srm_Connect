@@ -396,7 +396,7 @@ router.post("/delupvote",(req,res)=>{
 router.post("/dodownvote",(req,res)=>{
     var userid = req.body.userid
     var answerid = req.body.answerid
-    var sql = 'select * from upvotes where (userid) = ("'+userid+'") and (answerid) = ("'+answerid+'")';
+    var sql = 'select * from downvotes where (userid) = ("'+userid+'") and (answerid) = ("'+answerid+'")';
     con.query(sql,(err,result)=>{
 if(result.length!=0){
     
@@ -406,7 +406,7 @@ if(result.length!=0){
     })
 }
 else{
-    var sql = 'insert into upvotes (userid,answerid) values ("'+userid+'","'+answerid+'")';
+    var sql = 'insert into downvotes (userid,answerid) values ("'+userid+'","'+answerid+'")';
     con.query(sql,(err,result)=>{
         if(err){
             console.log(err);
@@ -420,7 +420,7 @@ else{
                 success:true,
                 status:200
             })
-            var sql2 = 'select * from upvotes where (answerid) = ("'+answerid+'")'
+            var sql2 = 'select * from downvotes where (answerid) = ("'+answerid+'")'
     con.query(sql2,(err,result)=>{
         if(err){
             console.log(err);
@@ -449,7 +449,7 @@ else{
 router.post("/downvote",(req,res)=>{
     
     var userid = req.body.userid
-    var sql = 'select * from upvotes where (userid) = ("'+userid+'")';
+    var sql = 'select * from downvotes where (userid) = ("'+userid+'")';
     con.query(sql,(err,result)=>{
         if(err){
             console.log(err);
@@ -470,7 +470,7 @@ router.post("/deldownvote",(req,res)=>{
     
     var userid = req.body.userid
     var answerid = req.body.answerid
-    var sql1 = 'delete from upvotes where (userid) = ("'+userid+'") and (answerid)=("'+answerid+'")';
+    var sql1 = 'delete from downvotes where (userid) = ("'+userid+'") and (answerid)=("'+answerid+'")';
     var sql2 = 'update answers set downvotes=downvotes-1 where answerid = ("'+answerid+'")';
     con.query(sql1,(err1,result1)=>{
         if(err1){

@@ -54,7 +54,7 @@ app.post("/signup", (req, res) => {
     con.query(sql, (err, result) => {
         if (result[0] == null) {
              
-            var path= 'C:/Users/HP/Desktop/SRM-Connect-BackEnd/SRM-Connect-BackEnd/uploads/'+im.name;
+            var path= '/home/shelby/Projects/Srm-connect-backend/uploads'+im.name;
    
     im.mv(path, function (err) {
         if (err){
@@ -140,9 +140,10 @@ app.post("/uploadevent", (req, res) => {
     const venue = req.body.venue
     const des = req.body.des
     const link = req.body.link
+    const category = req.body.category
     const eventid = Date.now();
     console.log('description passed',des);
-    var sql = 'insert into events (eventid,title,date,venue,description,link) values ("' + eventid + '","' + title + '","' + date + '","' + venue + '","' + des + '","' + link + '")';
+    var sql = 'insert into events (eventid,title,date,venue,description,link,category) values ("' + eventid + '","' + title + '","' + date + '","' + venue + '","' + des + '","' + link + '","'+ category +'")';
     con.query(sql, (err, result) => {
         if (err) {
             console.log(err);
@@ -231,7 +232,7 @@ else{const dd1 = im.name;
 })
 app.post("/dispics", (req, res) => {
 
-    fs.readdir('C:/Users/HP/connect-server/uploads', function (err, files) {
+    fs.readdir('/home/shelby/Projects/Srm-connect-backend/uploads', function (err, files) {
         //handling error
         if (err) {
             console.log('Unable to scan directory: ' + err);
@@ -406,5 +407,70 @@ app.post("/feedback", (req, res) => {
                         }
                     })
             })
-          
+        
+            app.post("/uploadinterests", (req, res) => {
+                const interests = req.body.interests
+                const userid = req.body.userid
+                var sql = 'select * from interests where userid like ("'+userid+'")';
+                con.query(sql, (err, result) => {
+                    if(result.length!=0){
+                        var sql='delete from interests where userid like ("'+userid+'")';
+                        con.query(sql, (err, result) =>{})
+                        var sql='insert into interests (userid,interests) values ("' + userid + '","'+ interests +'")';
+                        con.query(sql, (err, result) => {
+                        })
+                        if (err) {
+                            console.log(err);
+                            res.json({
+                                success: false,
+                                status: 400
+                            })
+                        }
+                        else {
+                            res.json({
+                                success: true,
+                                status: 200
+                            })
+                        }
+                    }else{
+                     var sql='insert into interests (userid,interests) values ("' + userid + '","'+ interests +'")'; 
+                    if (err) {
+                        console.log(err);
+                        res.json({
+                            success: false,
+                            status: 400
+                        })
+                    }
+                    else {
+                        res.json({
+                            success: true,
+                            status: 200
+                        })
+                    }
+                }
+                })
+            
+            
+            })
+
+            app.post("/fetchinterests",(req,res)=>{
+                const userid = req.body.userid;
+                var sql = 'select interests from interests where userid like ("'+userid+'")';
+                con.query(sql,(err,result)=>{
+                    if(err){
+                        console.log(err);
+                        res.json({
+                            success:false,
+                            status:400
+                        })
+                    }
+                    else{
+                        console.log(result);
+                        res.send(result)
+                    }
+                })
+            
+            })
+
+
 app.listen(process.env.PORT||3000);
