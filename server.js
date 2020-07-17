@@ -434,6 +434,8 @@ app.post("/feedback", (req, res) => {
                         }
                     }else{
                      var sql='insert into interests (userid,interests) values ("' + userid + '","'+ interests +'")'; 
+                        con.query(sql, (err, result) => {
+                        })
                     if (err) {
                         console.log(err);
                         res.json({
