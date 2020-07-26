@@ -1,0 +1,51 @@
+page-forgotpass {
+    ion-item{
+        background-color:white;
+        background: transparent !important;
+    }
+    #head{
+        font-size: 30px;
+    font-family: 'Abel';
+    color: white;
+    margin: 10px;
+    margin-left: 60px;
+    }
+#menu{
+    background-color:transparent;
+    float: left;
+    font-size: xx-large;
+    margin-left: 10px;
+    color: white;
+}
+#join{
+    border: 0.5px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 8px;
+}
+h2,h3,p{
+    color: lightgray;
+}
+.button{
+    background-color:rgb(24, 6, 90);
+    color: white; 
+    font-size: 20px;   
+    width: 50%; 
+    border-radius: 5px;
+    border-bottom-right-radius: 1.5rem; 
+    border-top-left-radius: 1.5rem; 
+    margin-top: 15px;
+    min-height: 40px;
+}
+ion-header{
+    background-color: #1b2c77;
+    border-bottom-right-radius: 3.5rem;
+    box-shadow: -5px 5px 0px 0 #1b2c77;
+}
+ion-input{
+    color: white;
+}
+.item-center{
+    text-align: center;
+}
+}

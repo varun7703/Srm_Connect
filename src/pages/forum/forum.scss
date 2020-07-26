@@ -1,0 +1,124 @@
+page-forum {
+    ion-header{
+        background-color: #1b2c77;
+    
+    box-shadow: -5px 5px 0px 0 #1b2c77;
+    }
+    .font-large{
+        font-size: x-large;
+    }
+    .transparent{
+        background: transparent !important;
+    }
+    .white{
+        color: white !important;
+    }
+    .wheat{
+        color: wheat !important;
+    }
+    .item-center{
+        text-align: center !important;
+    }
+    #menu{
+        background-color:transparent;
+        float: left;
+        font-size: xx-large;
+        color: white;
+        margin-left: 5px;
+        margin-right: 7px;
+    }
+    .master{
+        background-color:rgb(48, 48, 48);
+    }
+    .content{
+    color: white;
+    }
+    ion-card button{
+        color: white !important;
+    }
+    #head{
+    font-size: 30px;
+    color: white;
+    text-align: center !important;
+    display: inline;
+    font-family: 'Abel';
+    }
+    .card-md{
+        // border-radius: 6px;
+        //  border-bottom-left-radius: 2.5rem;
+        //  border-bottom-right-radius: 2.5rem;
+         background-color: #5e5e5e;
+        border-radius: 6px;
+    border-bottom-right-radius: 3.5rem;
+    width: 95%;
+    margin-left: auto;
+    margin-top: 20px;  
+    border-left: solid;
+    border-bottom: solid;
+    border-color: rgb(68, 68, 68);
+    border-width: 3px;
+    }
+    #nav{
+        display: inline;
+    }
+    .deets{
+        //background: linear-gradient(16deg, rgba(255,255,255,1) 70%, #0e92ed 98%);
+        //background: linear-gradient(16deg, rgb(73, 73, 73) 70%, #1d89d1 98%);
+         background-color: rgb(73, 73, 73);
+        // color: white;
+        border-bottom-left-radius: 2rem;
+        border-bottom-right-radius: 2rem;
+    }
+    .question-type{
+        font-weight: 1000;
+        // color: white;
+    }
+    .question{
+        font-weight: 800;
+        // color: white;
+    }
+    .vote{
+        padding: 0;
+        // color: white;
+    }   
+    .sh-ans{
+        // color: white;
+    }
+    .share{
+        // color: white !important;    
+        font-size: large;
+        
+    }
+    .edits{
+        // color: white;
+        display: inline-block;
+        font-weight: inherit;
+        min-height: 36px;
+        font-size: 17px;
+        vertical-align: -6px;
+    }
+    .fab-close-icon{
+        // color: white;
+        opacity: 100 !important;
+        font-size: 50px;
+    }
+    .search{
+        float: right;
+        font-size: 20px;
+        padding: 0;
+        padding-left: 15px;
+        color: rgb(24, 6, 90);
+    }
+    .delete{
+        color: white !important;
+        font-size: larger;
+    }
+    #top{
+        margin-top: 10px;
+    }
+    .lnav{
+        color: white;
+        float: right;
+        display: inline;
+    }
+}

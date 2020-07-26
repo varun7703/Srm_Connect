@@ -1,0 +1,45 @@
+page-add {
+    #heading{
+        margin-top: 10px;
+    }
+    #menu{
+        color:white;
+        float: left;
+        font-size: xx-large;
+        background-color:transparent;
+        margin-left: 10px;
+    }
+    ion-header{
+        background-color: #1b2c77;;
+    border-bottom-right-radius: 3.5rem;
+    box-shadow: -5px 3px 0px 0 #1b2c77;
+    }
+    h2{
+        
+        font-size: 30px;
+    color: white;
+    margin: 10px;
+    margin-top: 14px;
+    margin-left: 60px;
+    font-family: 'Abel';
+    }
+    .button{
+        background-color:rgb(24, 6, 90);
+    color: white; 
+    font-size: 24px;   
+    width: 50%; 
+    border-radius: 5px;
+    border-bottom-right-radius: 1.5rem;
+    border-top-left-radius: 1.5rem; 
+    min-height: 40px;
+    }
+    ion-item{
+        background: transparent !important;
+    }
+    ion-input{
+        color: white;
+    }
+    .item-center{
+        text-align: center;
+    }
+}

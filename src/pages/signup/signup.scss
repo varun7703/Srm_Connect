@@ -1,0 +1,64 @@
+page-signup {
+    ion-item{
+        background:transparent !important;
+    }
+    ion-input{
+        background: transparent !important;
+        color: white;
+        
+    }
+    $text-input-placeholder-color: lightgray;
+    #heading{
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+    #menu{
+        float: left;
+        font-size: xx-large;
+        background-color:transparent;
+        color: white;
+    }
+    ion-header{
+        background-color: rgb(24, 6, 90);
+    border-bottom-right-radius: 3.5rem;
+    font-size: 3.2rem;
+    font-family: 'Abel';
+    }
+    .master{
+        //background-image:linear-gradient(135deg,white 1%,#0e92ed 50%,white 45%,#0e92ed 99%);
+        background-color:rgb(53, 53, 53);
+        text-align: center;
+    }  
+    
+    .button{
+        background-color: rgb(24, 6, 90);
+    color: white; 
+    font-size: large;   
+    width: 50%; 
+    border-radius: 20px;  
+    border-style: solid;
+    border-color:rgb(24, 6, 90);
+    border-width: 2px;    
+    min-height: 45px;   
+    }
+    h2{
+        color:lightgray !important;
+    }
+    #signup{
+        color:white;
+        padding-bottom: 10px;
+        margin-top: 0;
+        margin-left: 60px;
+    }
+    #join{
+        border: 1px;
+        border-style: solid;
+        border-color: white;
+        border-radius: 8px;
+    }
+    .card-md{
+        border-radius: 8px; 
+        background: transparent !important;
+    }
+}
+

@@ -1,0 +1,98 @@
+<ion-header no-border>
+  <div class="item-center">
+    <button id="menu" class="white" type="submit" (click)="next1()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+  
+    <ion-item class="deet">
+      <ion-avatar class="head" item-start>
+        <img src="assets/imgs/images.png">
+      </ion-avatar>
+      <h4 class="white">{{query.name}}</h4>
+      <p class="wheat">{{query.date}} {{query.time}}</p>
+    </ion-item>
+  </div>
+</ion-header>
+
+<ion-content class="master">
+
+<div></div>
+  <ion-card>
+    
+    <ion-card-content class="questions">
+    <div class="question inline-block white">
+      Q: {{query.question}}
+    </div>
+    <br/>
+    <br>
+    <div class="description inline-block white">
+       {{query.description}}
+    </div>
+  
+    </ion-card-content>
+  </ion-card>
+
+
+
+  <div class="item-center">
+    <button ion-button clear (click)="Answer()" class="white">
+      ANSWERS
+    </button>
+
+    <div *ngFor="let comment of comments; let i = index">
+      <ion-card>
+        <ion-item class="deets">
+            <ion-avatar item-start>
+              <img src="assets/imgs/images.png">
+            </ion-avatar>
+            <h2 class="white">{{comment.username}}</h2>
+            <p class="wheat">{{comment.date}} {{comment.time}}</p>
+          </ion-item>
+          <br>
+          <ion-card-content>
+            <div class="description white">
+              {{comment.answers}}
+            </div>
+  
+            <br>
+            <button ion-button clear class="vote white" (click)="upvote(comment.answerid,i)">
+              <ion-icon name="arrow-round-up"></ion-icon>
+              &ensp;
+              
+            {{comment.upvotes-comment.downvotes}}
+            </button>
+            <!--<div *ngFor="let item of items"> 
+              <span>
+                <div *ngIf="items.includes(comment.answerid) ; else notToday">
+                  {{comment.upvotes - comment.donwvotes+xx}}
+                </div>
+                <ng-template #notToday>kweHR;QOE</ng-template>
+              </span>
+            </div>-->
+            &ensp;
+              <span>
+               <button ion-button clear class="vote white" (click)="downvote(comment.answerid,i)">
+                  <ion-icon name="arrow-round-down"></ion-icon>
+                </button>
+              </span>
+  
+            <button ion-button clear class="delete white" (click)="Delete(i)" *ngIf="uid==comment.userid">
+              <ion-icon name="md-trash"></ion-icon>
+            </button>
+          </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+
+    
+
+
+   
+ 
+</ion-content>
+<ion-footer >
+  <ion-input type="text" placeholder="Add an Answer.." class="textbox white" [(ngModel)]="answer"></ion-input>
+  <ion-fab right bottom>
+    <button ion-fab (click)="submit()"><ion-icon name="paper-plane"></ion-icon></button>
+  </ion-fab>
+</ion-footer>

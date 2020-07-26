@@ -1,0 +1,43 @@
+
+<ion-content class="master" padding>
+  <p id='head' ><b>SRM Connect</b></p>
+  <img id="image" src="../assets/imgs/social2.png" />
+  
+  <div>
+  <h3 class="share-tech">  Login</h3>
+  <form id="join" [formGroup]="log" (ngSubmit)="logForm()">
+
+    <ion-item no-lines>
+      <ion-label floating><h2>Username</h2></ion-label>
+      <ion-input  [(ngModel)]="name1" type="text" formControlName="username" no-lines></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="log.controls.username.hasError('required') && log.controls.username.touched">
+      <p>Username Required</p>
+    </ion-item>
+    
+
+    <ion-item no-lines class="password">
+      <ion-label floating><h2>Password</h2></ion-label>
+      <ion-input [(ngModel)]="pas1" type="password" formControlName="password" no-lines></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="log.controls.password.hasError('required') && log.controls.password.touched">
+      <p>Password Required</p>
+    </ion-item>
+
+    <button class="forgot text-right" (click)=forgot()>Forgot Password?</button>
+        
+  </form>
+</div>
+  <br>
+  <br>
+  <div class="text-center">
+    <p></p>
+  <button ion-button class="submit" type="submit" (click)="next1()"  [disabled]="!log.valid">Login</button>
+  <hr>
+  <br>
+  
+  <p>Logging in for the first time?</p>
+    <button ion-button class="submit" type="submit" (click)="next()" >Sign up</button>
+  </div>
+  
+</ion-content>
