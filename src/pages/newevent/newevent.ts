@@ -36,6 +36,7 @@ next(){
     date:this.date,
     category:this.category
   }
+  if(this.title&&this.venue&&this.desc&&this.date&&this.category){
   this.http.post('http://34.93.191.211:5555/uploadevent',body).subscribe(res =>{
     console.log("success")
   })     
@@ -46,5 +47,6 @@ next(){
   alert.present();               
 
 this.navCtrl.pop();
+}
 }
 }

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { EventsPage } from '../events/events';
 import { Storage }from '@ionic/storage';
 import { Http }from '@angular/http';
+import { EventsPage } from '../events/events';
 
 
 @Component({
@@ -22,9 +22,7 @@ export class EventformPage {
         eventid:this.id
       }
       this.http.post('http://34.93.191.211:5555/showdescription',body).subscribe(response =>{
-        console.log(response.json())
         this.events=response.json();
-          console.log(this.events);
     })
     })
 
@@ -34,6 +32,6 @@ export class EventformPage {
     console.log('ionViewDidLoad EventformPage');
   }
   next1(){
-    this.navCtrl.push(EventsPage);
+    this.navCtrl.popTo(EventsPage);
    }
 }

@@ -23,6 +23,7 @@ export class HomePage {
   constructor(public navCtrl: NavController, private formBuilder: FormBuilder, 
               public navParams: NavParams,public http:Http,
               public storage:Storage, public menu:MenuController) {
+                this.storage.set('status',"false");
     this.log = this.formBuilder.group({
       username: ['',[Validators.required, Validators.minLength(3)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -59,8 +60,9 @@ next1(){
     this.storage.set('token', this.token );
     this.storage.set('userid', this.userid );
     this.storage.set('uname',this.name1);
-  this.navCtrl.setRoot(EventsPage);
+    this.navCtrl.setRoot(EventsPage);
   //this.storage.set('status','true');
+  this.storage.set('status',"true");
   }
   })
   }

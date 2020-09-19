@@ -8,6 +8,7 @@ import { AboutusPage } from '../pages/aboutus/aboutus';
 import { EventsPage } from '../pages/events/events';
 import { ForumPage } from '../pages/forum/forum';
 import { MyprofilePage } from '../pages/myprofile/myprofile';
+import { Storage }from '@ionic/storage';
 //import { NewpagePage } from '../pages/newpage/newpage';
 
 
@@ -21,9 +22,19 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, 
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,public storage:Storage) {
+      this.platform.ready().then(() => {
+        this.splashScreen.hide();
+        this.storage.get('status').then(status=>{
+          if(status=="true"){
+            this.rootPage=EventsPage
+          }
+        })
+      })
     this.initializeApp();
-
+    
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'My Profile', component: MyprofilePage},

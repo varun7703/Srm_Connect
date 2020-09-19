@@ -39,24 +39,22 @@ export class EventsPage {
     this.storage.set('status', 'true');
 
     this.storage.get('token').then((val) => {
-      console.log(val);
       this.as = val;
-      console.log('token is ', this.as);
       let body = {
         as: this.as
       }
       this.http.post('http://34.93.191.211:5555/disevents', body).subscribe(response => {
         // this.events = response.json();
 
-         console.log((response.json()))
+         
         if (response.json().status == 500) {
           alert("session expired");
           this.navCtrl.setRoot(HomePage);
+          this.storage.set('status',"false");
         }
         else {
           if (response.json() != null) {
             this.events = response.json();
-            console.log("evnt :",this.events )
           }
           else {
             alert("failed");
@@ -83,7 +81,7 @@ export class EventsPage {
         
         this.int=res;
         this.interests=(this.int._body).toString();
-        console.log(this.interests)
+        
       })
     })
 
@@ -94,7 +92,6 @@ export class EventsPage {
 
   ionViewDidLoad() {
     this.selectedSegment = 'all';
-    console.log('ionViewDidLoad EventsPage');
   }
 
   addEvent(){
@@ -114,7 +111,6 @@ export class EventsPage {
 
     this.http.post('http://34.93.191.211:5555/addfavourites', body).subscribe(res => {
       if(res.json().status==500){
-        console.log('done');
       const alert = this.alertCtrl.create({
         title: 'Already a Favourite',
         buttons: ['OK']
@@ -122,7 +118,6 @@ export class EventsPage {
       alert.present();
       }
       else{
-      console.log('done');
       const alert = this.alertCtrl.create({
         title: 'Added to Favourites',
         buttons: ['OK']
@@ -130,7 +125,7 @@ export class EventsPage {
       alert.present();
     }
     });
-
+    this.ionViewDidLoad();
     this.ionViewWillEnter();
   }
 
@@ -146,6 +141,7 @@ export class EventsPage {
         buttons: ['OK']
       });
       alert.present();
+      this.ionViewWillEnter();
       this.ionViewDidLoad();
       this.ionViewWillEnter();
     }
@@ -159,23 +155,23 @@ export class EventsPage {
       eventid: eventid
     }
     this.http.post('http://34.93.191.211:5555/delfavourites', body).subscribe(res => {
-      console.log('done');
       const alert = this.alertCtrl.create({
         title: 'Deleted from Favourites',
         buttons: ['OK']
       });
       alert.present();
     });
+    this.ionViewDidLoad();
     this.ionViewWillEnter();
+    this.selectedSegment="favo";
   }
 
   all() {
     this.ionViewWillEnter();
-    console.log('current segment is ', this.selectedSegment)
+
   }
 
   favourites() {
-    console.log('current segment is ', this.selectedSegment)
   }
 
   share(title,description,link) {

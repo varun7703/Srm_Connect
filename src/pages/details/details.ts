@@ -12,8 +12,6 @@ import {ForumPage} from '../forum/forum'
 export class DetailsPage {
   query:any
   searchQuery: string=''; 
-  upvotes=32
-  downvotes=0
   username=""
   check1: boolean=false
   check: boolean=false
@@ -29,7 +27,6 @@ export class DetailsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               public http: Http, public storage:Storage) {
                 this.query=navParams.get("detail")
-                console.log(this.query)
           
     this.storage.get('userid').then((val1)=>{
       this.uid =val1;
@@ -51,23 +48,20 @@ export class DetailsPage {
           username: this.username
         }
       this.http.post('http://34.93.191.211:5555/answers',body).subscribe(res =>{
-           console.log("success")
+        this.http.post('http://34.93.191.211:5555/inc_count',body).subscribe(res=>{
+          this.http.post('http://34.93.191.211:5555/disanswers',body).subscribe(res=>{
+            this.comments = res.json();
+      
+          },err =>{
+            console.log("Server Down")
+          })
+        })
       })               
 
-      this.http.post('http://34.93.191.211:5555/disanswers',body).subscribe(res=>{
-      this.comments = res.json();
-      console.log(this.comments);
-    },err =>{
-      console.log("Server Down")
-    })
+      
   
     }
     this.answer="";
-
-    this.http.post('http://34.93.191.211:5555/inc_count',body).subscribe(res=>{
-      
-    })
- 
   }
 
   Delete(i:number){
@@ -76,27 +70,31 @@ export class DetailsPage {
       questionid : this.comments[i].questionid
     }
     this.http.post('http://34.93.191.211:5555/delanswer',body).subscribe(res=>{
-    
-      },err =>{
+      this.http.post('http://34.93.191.211:5555/dec_count',body).subscribe(res=>{
+        this.http.post('http://34.93.191.211:5555/disanswers',body).subscribe(res=>{
+          this.comments = res.json();
+      
+        },err =>{
+           console.log("Server Down")
+        })
+      })
+    },err =>{
         console.log("Server Down")
     })
-    this.http.post('http://34.93.191.211:5555/dec_count',body).subscribe(res=>{
-      
-    })
-    this.ionViewWillEnter();
+    
   }
 
   Answer(){
     this.check1=!(this.check1);
   }
-  ionViewWillEnter() {
+  ionViewWillLoad() {
     var body= {
       questionid : this.query.questionid
     }
-    console.log(body);
+    
   this.http.post('http://34.93.191.211:5555/disanswers',body).subscribe(res=>{
     this.comments = res.json();
-    console.log(this.comments);
+    
   },err =>{
     console.log("Server Down")
   })
@@ -105,7 +103,6 @@ export class DetailsPage {
   }
   this.http.post('http://34.93.191.211:5555/upvote',body1).subscribe(res=>{
     this.items = res.json();
-    console.log(this.items);
   },err =>{
     console.log("Server Down")
   })
@@ -127,7 +124,7 @@ upvote(answerid,index:number){
         answerid:answerid
       }
       this.http.post('http://34.93.191.211:5555/delupvote',body).subscribe(res=>{
-        console.log(res.json())
+        
         
       })
       this.comments[index].upvotes=this.comments[index].upvotes-1;
@@ -135,7 +132,7 @@ upvote(answerid,index:number){
     }else{this.comments[index].upvotes=this.comments[index].upvotes+1;}
   
       })
-  console.log(answerid , this.uid)
+  
   
 }
 next1(){
@@ -156,13 +153,13 @@ downvote(answerid,index:number){
             answerid:answerid
           }
           this.http.post('http://34.93.191.211:5555/deldownvote',body).subscribe(res=>{
-            console.log(res.json())
+            
             this.comments[index].downvotes=this.comments[index].downvotes-1;
           })
         
         }else{ this.comments[index].downvotes=this.comments[index].downvotes+1;}
       
           })
-      console.log(answerid , this.uid)
+      
 }
 } 

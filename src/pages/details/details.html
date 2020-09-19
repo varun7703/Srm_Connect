@@ -39,7 +39,7 @@
       ANSWERS
     </button>
 
-    <div *ngFor="let comment of comments; let i = index">
+    <div  *ngFor="let comment of comments; let i = index">
       <ion-card>
         <ion-item class="deets">
             <ion-avatar item-start>
@@ -61,14 +61,6 @@
               
             {{comment.upvotes-comment.downvotes}}
             </button>
-            <!--<div *ngFor="let item of items"> 
-              <span>
-                <div *ngIf="items.includes(comment.answerid) ; else notToday">
-                  {{comment.upvotes - comment.donwvotes+xx}}
-                </div>
-                <ng-template #notToday>kweHR;QOE</ng-template>
-              </span>
-            </div>-->
             &ensp;
               <span>
                <button ion-button clear class="vote white" (click)="downvote(comment.answerid,i)">

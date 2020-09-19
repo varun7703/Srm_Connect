@@ -96,6 +96,7 @@ export class ForumPage {
         console.log("Server Down")
     })
     this.ionViewWillEnter();
+    this.ionViewWillEnter();
   }
 
   ionViewWillEnter(){
