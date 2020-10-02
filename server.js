@@ -95,16 +95,22 @@ app.post("/signup", (req, res) => {
     })
 })
 app.post("/passcheck", (req, res) => {
-    const name = req.body.name1
-    const password = req.body.pas1
+    const name = req.body.name1;
+    const password = req.body.pas1;
     var sql = 'select * from users where (name) = ("' + name + '")';
     con.query(sql, (err, result) => {
         if (result[0] == null) {
-
             console.log(err);
             res.json({
                 success: false,
-                status: 400
+                status: 400,
+            })
+        }
+        else if( name != result[0].username) {
+            console.log(err);
+            res.json({
+                success: false,
+                status: 400,
             })
         }
         else {
@@ -123,11 +129,10 @@ app.post("/passcheck", (req, res) => {
                 console.log(result);
             } else {
                 // Passwords don't match
-
                 console.log(err);
                 res.json({
                     success: false,
-                    status: 400
+                    status: 400,
                 })
             }
 
