@@ -49,7 +49,7 @@ next1(){
   this.http.post('http://34.93.191.211:5555/passcheck',body).subscribe(response=>{console.log(response.json())
         
   if(response.json().status==400){
-    alert("Password incorrect");
+        alert("Username or Password incorrect");
   }
   else{
     this.token=response.json().token;
