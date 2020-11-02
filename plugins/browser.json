@@ -1,0 +1,46 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "io.starter.srmc"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "io.starter.srmc"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "io.starter.srmc"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "io.starter.srmc"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "io.starter.srmc"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "io.starter.srmc"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.starter.srmc"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "io.starter.srmc"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "io.starter.srmc"
+    },
+    "onesignal-cordova-plugin": {
+      "PACKAGE_NAME": "io.starter.srmc"
+    }
+  },
+  "dependent_plugins": {
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "io.starter.srmc"
+    }
+  }
+}
