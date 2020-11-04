@@ -22,6 +22,7 @@ import {DetailsPage} from '../pages/details/details';
 import {AddPage} from '../pages/add/add';
 import {ForgotpassPage} from '../pages/forgotpass/forgotpass';
 import {NeweventPage} from '../pages/newevent/newevent';
+import { UpdateProfilePage } from '../pages/update-profile/update-profile';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {NeweventPage} from '../pages/newevent/newevent';
     AddPage,
     MyprofilePage,
     ForgotpassPage,
-    NeweventPage
+    NeweventPage,
+    UpdateProfilePage
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ import {NeweventPage} from '../pages/newevent/newevent';
     AddPage,
     MyprofilePage,
     ForgotpassPage,
-    NeweventPage
+    NeweventPage,
+    UpdateProfilePage
   ],
   providers: [
     StatusBar,
