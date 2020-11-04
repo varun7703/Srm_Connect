@@ -4,6 +4,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
+import { UpdateProfilePage } from '../update-profile/update-profile';
 
 
 
@@ -48,8 +49,10 @@ export class MyprofilePage {
       this.user = val1;
 
       let body = { userid: this.user }
+      console.log(body);
       this.http.post('http://34.93.191.211:5555/disprofile', body).subscribe(res => {
         this.details = res.json();
+        console.log("Details:", this.details);
         if (res.json() != null) {
           this.items = res.json();
         }
@@ -59,28 +62,30 @@ export class MyprofilePage {
       })
     })
   }
-  store(){
-    let userdata={
-    name: this.name,
-    em:this.em,
-    mob:this.mob,
-    reg:this.reg,
-    batch:this.batch,
-    dept:this.dept,
-    course:this.course,
-    year:this.year,
-    userid:this.user
-  }
-  this.http.post('http://34.93.191.211:5555/updateprofile',userdata).subscribe(res=>{
+//   store(){
+//     let userdata={
+//     name: this.name,
+//     em:this.em,
+//     mob:this.mob,
+//     reg:this.reg,
+//     batch:this.batch,
+//     dept:this.dept,
+//     course:this.course,
+//     year:this.year,
+//     userid:this.user
+//   }
+//   this.http.post('http://34.93.191.211:5555/updateprofile',userdata).subscribe(res=>{
         
-  })
-  const alert = this.alertCtrl.create({
-    title: 'Changes Saved',
-    buttons: ['OK']
-  });
-  alert.present();
-  this.ionViewWillEnter();
+//   })
+//   const alert = this.alertCtrl.create({
+//     title: 'Changes Saved',
+//     buttons: ['OK']
+//   });
+//   alert.present();
+//   this.ionViewWillEnter();
+// }
+goToUpdate(){
+  this.navCtrl.push(UpdateProfilePage, {userdata: this.details});
 }
-
   
 }
